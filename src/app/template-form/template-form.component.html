@@ -1,15 +1,17 @@
-<form #myForm="ngForm" action="/regist" method="post" (ngSubmit)="onSubmit(myForm.value)">
-  <div>user:<input #username="ngModel" ngModel name="username" type="text" /></div>
-  <div>phone:<input ngModel name="mobile" type="number" /></div>
-  <div ngModelGroup="passwordGroup">
-    <div>password:<input ngModel name="password" type="password" /></div>
-    <div>config password:<input ngModel name="pconfig" type="password" /></div>
-  </div>
+<div class="temp">
+  <form #myForm="ngForm" action="/regist" method="post" (ngSubmit)="onSubmit(myForm.value)">
+    <div>user:<input #username="ngModel" ngModel name="username" type="text" /></div>
+    <div>phone:<input ngModel name="mobile" type="number" /></div>
+    <div ngModelGroup="passwordGroup">
+      <div>password:<input ngModel name="password" type="password" /></div>
+      <div>config password:<input ngModel name="pconfig" type="password" /></div>
+    </div>
     <button type="submit">注册</button>
-</form>
-<div>
-  {{myForm.value | json}}
-</div>
-<div>
-  {{username.value}}
+  </form>
+  <div>
+    {{myForm.value | json}}
+  </div>
+  <div>
+    {{username.value}}
+  </div>
 </div>

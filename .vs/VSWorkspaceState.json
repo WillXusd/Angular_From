@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\reactive-regist",
     "\\src\\app\\template-form"
   ],
-  "SelectedNode": "\\src\\app\\template-form\\template-form.component.ts",
+  "SelectedNode": "\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }
