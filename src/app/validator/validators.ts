@@ -22,8 +22,14 @@ export function mobileValidator(control: FormControl): any
 export function equalValidator(group: FormGroup): any {
   let password: FormControl = group.get("password") as FormControl;
   let pconfirm: FormControl = group.get("pconfirm") as FormControl;
-  let valid: boolean = (password.value === pconfirm.value);
-  console.log("密码校验结果->", valid);
-  return valid ? null : {
-    equal: {desc:"密码和确认密码不匹配"} };
+
+  if (password && pconfirm) {
+    let valid: boolean = (password.value === pconfirm.value);
+    console.log("password.value->", password);
+    console.log("密码校验结果->", valid);
+    return valid ? null : {
+      equal: { desc: "密码和确认密码不匹配" }
+    };
+  }
+  
 }
