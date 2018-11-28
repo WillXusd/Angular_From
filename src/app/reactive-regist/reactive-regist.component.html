@@ -1,9 +1,18 @@
 <form [formGroup]="formModel" (submit)="onSubmit()">
-  <div>用户名：<input type="text" formControlName="username"/></div>
-  <div>手机号：<input type="text" formControlName="mobile"/></div>
+  <div>用户名：<input type="text" formControlName="username" /></div>
+  <!--第一个参数是检验是否通过，第二个字段是要检验的字段-->
+  <div [hidden]="!formModel.hasError('required','username')">用户名是必填项</div>
+  <div [hidden]="!formModel.hasError('minlength','username')">用户名最少长度是6</div>
+  <div>手机号：<input type="text" formControlName="mobile" /></div>
+  <div [hidden]="!formModel.hasError('mobile','mobile')">请输入正确的手机号</div>
   <div formGroupName="passwordsGroup">
-    <div>密码：<input type="password" formControlName="password"/></div>
-    <div>确认密码：<input type="password" formControlName="pconfirm"/></div>
+    <div>密码：<input type="password" formControlName="password" /></div>
+    <div>确认密码：<input type="password" formControlName="pconfirm" /></div>
+    <!--//校验的字段是数组-->
+    <div [hidden]="!formModel.hasError('minlength',['passwordsGroup','password'])">m密码最少长度是6</div>
+    <div [hidden]="!formModel.hasError('equal','passwordsGroup')">
+      {{formModel.getError('equal','passwordsGroup')?.desc}}
+    </div>
   </div>
   <button type="submit">注册</button>
 </form>
