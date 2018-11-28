@@ -1,10 +1,18 @@
 <form [formGroup]="formModel" (submit)="onSubmit()">
-  <div>用户名：<input type="text" formControlName="username" /></div>
-  <!--第一个参数是检验是否通过，第二个字段是要检验的字段-->
-  <div [hidden]="!formModel.hasError('required','username')">用户名是必填项</div>
-  <div [hidden]="!formModel.hasError('minlength','username')">用户名最少长度是6</div>
+  <div>用户名：<input [class.hasError]="formModel.get('username').invalid && formModel.get('username').touched" type="text" formControlName="username" /></div>
+  <!-- 表单数据通过或焦点没有碰过 -->
+  <div [hidden]="formModel.get('username').valid || formModel.get('username').untouched">
+    <!--第一个参数是检验是否通过，第二个字段是要检验的字段-->
+    <div [hidden]="!formModel.hasError('required','username')">用户名是必填项</div>
+    <div [hidden]="!formModel.hasError('minlength','username')">用户名最少长度是6</div>
+  </div>
   <div>手机号：<input type="text" formControlName="mobile" /></div>
-  <div [hidden]="!formModel.hasError('mobile','mobile')">请输入正确的手机号</div>
+  <div [hidden]="formModel.get('mobile').valid || formModel.get('mobile').pristine"> 
+    <div [hidden]="!formModel.hasError('mobile','mobile')">请输入正确的手机号</div>
+  </div>
+  <div [hidden]="!formModel.get('mobile').pending">
+    正在校验手机号合法性
+  </div>
   <div formGroupName="passwordsGroup">
     <div>密码：<input type="password" formControlName="password" /></div>
     <div>确认密码：<input type="password" formControlName="pconfirm" /></div>

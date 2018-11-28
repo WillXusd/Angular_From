@@ -17,6 +17,7 @@ export function mobileValidator(control: FormControl): any
 //  console.log("mobile的校验结果是:" + valid);
 //  return Observable.of(valid ? null : { mobile: true });
 //}
+
 //formGroup的校验器
 export function equalValidator(group: FormGroup): any {
   let password: FormControl = group.get("password") as FormControl;
